@@ -1,9 +1,10 @@
+import sys
 def number_of_words(text):
     return len(text.split())
 
 def number_of_characters(text):
     char_counts = {}
-    with open('books/frankenstein.txt', 'r', encoding='utf-8') as file:
+    with open(sys.argv[1], 'r', encoding='utf-8') as file:
         for line in file:
             for char in line:
                 if char.isalpha():  # Check if the character is a letter
@@ -21,7 +22,7 @@ def get_book_text(file_path):
     Returns:
         str: The content of the file as a string.
     """
-    with open(file_path, 'r', encoding='utf-8') as file:
+    with open(sys.argv[1], 'r', encoding='utf-8') as file:
         return file.read()
 
 def print_dict(dictionary):
@@ -37,12 +38,12 @@ def print_dict(dictionary):
 
 def main():
     
-    book_path = 'books/frankenstein.txt'
+    book_path = sys.argv[1]
     book_text = get_book_text(book_path)
     # Print the number of words in the book
     word_count = number_of_words(book_text)
     print("----------- Word Count ----------")
-    print(f"{word_count} words found in the document")
+    #print(f"{word_count} words found in the document")
     num_char = number_of_characters(book_text)
     print("----------- Character Count ----------")
     print_dict(num_char)
