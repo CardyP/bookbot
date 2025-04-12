@@ -12,8 +12,11 @@ def get_book_text(filepath):
     """
     try:
     """
-    with open('books/frankenstein.txt', 'r', encoding='utf-8') as file:
-        return file.read()
+    text = []
+    with open(filepath, 'r', encoding='utf-8') as file:
+        for line in file:
+            text.append(line.strip())  # Read and strip each line
+    return "\n".join(text)  # Combine lines into a single string
     """except FileNotFoundError:
         return "The file was not found. Please check the path."
     except Exception as e:
@@ -33,7 +36,7 @@ def main():
     # Print the number of words in the book
         word_count = number_of_words(book_text)
     #print("----------- Word Count ----------")
-    #print(f"Found {word_count} total words")
+        print(f"Found {word_count} total words")
         num_char = number_of_characters(book_text)
     #print("----------- Character Count ----------")
         print_dict(num_char)

@@ -1,6 +1,9 @@
 import sys
 def number_of_words(text):
-    return len(text.split())
+    word_count = 0
+    for line in text.splitlines():  # Process text line by line
+        word_count += len(line.split())  # Count words in each line
+    return word_count
 
 def number_of_characters(text):
     char_counts = {}
